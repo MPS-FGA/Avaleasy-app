@@ -4,4 +4,6 @@ PRE="\n-------------------------------------------------------------------------
 MSG="Server is running on"
 PORT="19000"
 
+echo -e "So you're running with Docker :D. You must IGNORE the QR code printed!!\n"
+echo -e "YOU MUST USE THIS ADDRESS TO CONNECT TO THE APP WITH EXPO:"
 echo -e $PRE$MSG "exp://""$IP":"$PORT$PRE"
