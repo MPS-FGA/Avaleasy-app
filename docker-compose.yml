@@ -9,3 +9,9 @@ services:
       - .:/app
       - /app/node_modules
     command: yarn start 
+    networks:
+      - avaleasy-net
+networks:
+  avaleasy-net:
+    external:
+      name: avaleasy-net

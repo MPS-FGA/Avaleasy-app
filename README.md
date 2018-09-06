@@ -2,6 +2,11 @@
 
 ## Using Docker
 
+0. Create the network to connect the [backend](https://github.com/MPS-FGA/Avaleasy-backend) 
+```bash
+docker network create avaleasy-net
+```
+
 1. Run with:
 ```
 docker-compose up 
