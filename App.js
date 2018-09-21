@@ -1,14 +1,23 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
 
-export default class App extends React.Component {
+export default class Login extends React.Component {
+  _onPressEnter(){
+    Alert.alert('You tapped the button!')
+  }
+  constructor(props) {
+    super(props);
+    this.state = { email: '', password: '' };
+  }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
-      </View>
+        <TextInput onChangeText={(email) => this.setState({email})}
+        value={this.state.email} />
+        <TextInput secureTextEntry={true} onChangeText={(password) => this.setState({password})}
+        value={this.state.password} />
+        <Button onPress={this._onPressEnter} title="ENTRAR"
+        />
     );
   }
 }
