@@ -1,8 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, Alert, Image } from 'react-native';
 
-import { Wallpaper } from "./login/background";
-
 export default class Login extends React.Component {
   _onPressEnter(){
     Alert.alert('You tapped the button!')
@@ -20,12 +18,11 @@ export default class Login extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Image style={styles.image} source={require('./images/wallpaper.png')}/>
+        <Image style={styles.image} source={require('./images/avaleasy.png')}/>
 
 
-          <TextInput style={styles.textInput} onChangeText={(email) => this.setState({email})}
-          value={this.state.email} />
-          <TextInput style={styles.textInput} secureTextEntry={true} onChangeText={(password) => this.setState({password})}
+          <TextInput style={styles.textInput} placeholder='Email'/>
+          <TextInput style={styles.textInput} placeholder='Senha' secureTextEntry={true} onChangeText={(password) => this.setState({password})}
           value={this.state.password} />
 
           <Button styles={styles.button} onPress={this._onPressEnter} title="ENTRAR" />
@@ -50,7 +47,8 @@ const styles = StyleSheet.create({
 
   textInput: {
     fontSize: 16,
-    marginBottom: 30
+    marginBottom: 20,
+    justifyContent: 'flex-end'
   },
 
   button: {
