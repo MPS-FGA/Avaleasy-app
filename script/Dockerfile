@@ -10,4 +10,4 @@ RUN yarn install
 
 ADD . /app
 
-CMD ["sh", "start.sh"]
+CMD ["sh", "script/start.sh"]
