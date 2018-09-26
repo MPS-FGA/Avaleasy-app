@@ -1,17 +1,21 @@
-version: '3'
+version: '3.5'
 services:
   app:
-    build: .
+    container_name: avaleasy-app
+    privileged: true
+    image: avaleasy/avaleasy-app:1.0.0
     ports:
       - 19000:19000
       - 19001:19001
     volumes:
       - .:/app
       - /app/node_modules
-    command: yarn start 
     networks:
       - avaleasy-net
+    external_links:
+      - avaleasy-backend
+
 networks:
   avaleasy-net:
-    external:
       name: avaleasy-net
+      external: true
