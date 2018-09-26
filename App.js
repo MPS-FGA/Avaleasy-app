@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
+
+import Login from './src/login/Login.js';
 import TeacherForm from './src/components/teachers_form.js'
 import t from 'tcomb-form-native';
 
@@ -11,6 +13,10 @@ export default class App extends Component {
      <View>
        <TeacherForm/>
      </View>
+     
+     <View>
+        <Login />
+      </View>
    );
  }
 }
