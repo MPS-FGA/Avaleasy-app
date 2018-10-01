@@ -1,5 +1,7 @@
 FROM node:10-alpine
 
+RUN mkdir /app
+
 WORKDIR /app
 
 RUN apk add --no-cache bash
@@ -10,4 +12,6 @@ RUN yarn install
 
 ADD . /app
 
-CMD ["sh", "script/start.sh"]
+RUN chmod +x start.sh
+
+CMD ["./start.sh"]
