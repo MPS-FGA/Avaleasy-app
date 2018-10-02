@@ -1,28 +1,33 @@
-import React, {Component} from 'react';
-import { StyleSheet, View, Alert, Image, TouchableHighlight, Text } from 'react-native';
+import React, { Component } from 'react';
+import { StyleSheet, ScrollView, Alert, Image } from 'react-native';
+
 import { FloatingLabelInput } from '../components/FloatingLabelInput';
 import { ButtonComponent } from '../components/ButtonComponent';
 
-export default class Login extends Component {
-  _login(){
-    Alert.alert('You tapped the button!')
-  }
 
-  _signUp() {
-    Alert.alert('You will can sign up soon!')
-  }
+export default class Login extends Component {
+
+  static navigationOptions = {
+    header: null,
+  };
 
   constructor(props) {
     super(props);
     this.state = { email: '', password: '' };
   }
 
-  render() {
-    return (
-      <View style={styles.container}>
-        <Image style={styles.image} source={require('../../images/avaleasy.png')}/>
+  _login(){
+    Alert.alert('You tapped the button!')
+  }
 
-          <FloatingLabelInput 
+  render() {
+    const { navigate } = this.props.navigation;
+
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+        <Image style={styles.image} source={require('../images/avaleasy.png')} />
+
+          <FloatingLabelInput
             label="Email"
             value={this.state.email}
             keyboardType="email-address"
@@ -35,21 +40,21 @@ export default class Login extends Component {
             onChangeText={(password => this.setState({password}))}
           />
 
-          <ButtonComponent 
+          <ButtonComponent
             onPress={this._login}
             title="ENTRAR"
             label="ENTRAR"
-            style={styles.buttonLogin} 
+            style={styles.buttonLogin}
           />
 
           <ButtonComponent
-            onPress={this._signUp}
+            onPress={() => navigate('SignUp', { name: 'Jane' })}
             title="CADASTRAR-SE"
             label="CADASTRAR-SE"
-            style={styles.buttonSignUp} 
+            style={styles.buttonSignUp}
           />
 
-      </View>
+      </ScrollView>
     );
   }
 }
