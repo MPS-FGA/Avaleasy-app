@@ -1,22 +1,19 @@
-import React, {Component} from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
-
-import Login from './src/login/Login.js';
-import TeacherForm from './src/components/teachers_form.js'
+import React, { Component } from 'react';
+import { View, ScrollView } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 import t from 'tcomb-form-native';
+
+import Login from './src/login/Login';
+import {ButtonComponent} from "./src/components/ButtonComponent";
+import TeacherForm from './src/components/teachers_form.js'
+import Profile from './src/profile/Profile';
 
 const Form = t.form.Form;
 
-export default class App extends Component {
-  render() {
-   return (
-     <View>
-       <TeacherForm/>
-     </View>
-     
-     <View>
-        <Login />
-      </View>
-   );
- }
-}
+const App = createStackNavigator({
+    Home: { screen: Login },
+    SignUp: { screen: TeacherForm },
+    Profile: { screen: Profile }
+});
+
+export default App;
