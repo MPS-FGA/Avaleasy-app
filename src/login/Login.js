@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { StyleSheet, ScrollView, Alert, Image } from 'react-native';
+import {
+  StyleSheet, ScrollView, Alert, Image,
+} from 'react-native';
 
 import { FloatingLabelInput } from '../components/FloatingLabelInput';
 import { ButtonComponent } from '../components/ButtonComponent';
 
 
 export default class Login extends Component {
-
   static navigationOptions = {
     header: null,
   };
@@ -16,8 +17,8 @@ export default class Login extends Component {
     this.state = { email: '', password: '' };
   }
 
-  _login(){
-    Alert.alert('You tapped the button!')
+  _login() {
+    Alert.alert('You tapped the button!');
   }
 
   render() {
@@ -27,32 +28,32 @@ export default class Login extends Component {
       <ScrollView contentContainerStyle={styles.container}>
         <Image style={styles.image} source={require('../images/avaleasy.png')} />
 
-          <FloatingLabelInput
-            label="Email"
-            value={this.state.email}
-            keyboardType="email-address"
-            onChangeText={(email) => this.setState({email})}
-          />
+        <FloatingLabelInput
+          label="Email"
+          value={this.state.email}
+          keyboardType="email-address"
+          onChangeText={email => this.setState({ email })}
+        />
 
-          <FloatingLabelInput
-            label="Senha"
-            secureTextEntry={true}
-            onChangeText={(password => this.setState({password}))}
-          />
+        <FloatingLabelInput
+          label="Senha"
+          secureTextEntry
+          onChangeText={(password => this.setState({ password }))}
+        />
 
-          <ButtonComponent
-            onPress={this._login}
-            title="ENTRAR"
-            label="ENTRAR"
-            style={styles.buttonLogin}
-          />
+        <ButtonComponent
+          onPress={this._login}
+          title="ENTRAR"
+          label="ENTRAR"
+          style={styles.buttonLogin}
+        />
 
-          <ButtonComponent
-            onPress={() => navigate('SignUp')}
-            title="CADASTRAR-SE"
-            label="CADASTRAR-SE"
-            style={styles.buttonSignUp}
-          />
+        <ButtonComponent
+          onPress={() => navigate('SignUp')}
+          title="CADASTRAR-SE"
+          label="CADASTRAR-SE"
+          style={styles.buttonSignUp}
+        />
 
       </ScrollView>
     );
