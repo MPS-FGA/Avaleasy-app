@@ -46,10 +46,50 @@ export default class ExamTemplateList extends Component {
               <View style={styles.item}>
                 <Text>{item.title}</Text>
                 <Text>{item.value}</Text>
-                <Text>{item.tblQuestions.toString()}</Text>
-                <Text>{item.objectiveQuestions.toString()}</Text>
-                <Text>{item.multipleChoiceQuestions.toString()}</Text>
-                <Text>{item.tfQuestions.toString()}</Text>
+                <FlatList 
+                  data={item.objectiveQuestions} 
+                  listKey="ObjectiveQuestions"
+                  renderItem={
+                    ({item}) =>
+                      <View>
+                        <Text>{item.title}</Text>
+                        <Text>{item.punctuation}</Text>
+                      </View>
+                  }  
+                />
+                <FlatList 
+                  data={item.tblQuestions} 
+                  listKey="tblQuestions"
+                  renderItem={
+                    ({item}) =>
+                      <View>
+                        <Text>{item.title}</Text>
+                        <Text>{item.punctuation}</Text>
+                      </View>
+                  }  
+                />
+                <FlatList 
+                  data={item.multipleChoiceQuestions} 
+                  listKey="multipleChoiceQuestions"
+                  renderItem={
+                    ({item}) =>
+                      <View>
+                        <Text>{item.title}</Text>
+                        <Text>{item.punctuation}</Text>
+                      </View>
+                  }  
+                />
+                <FlatList 
+                  data={item.tfQuestions} 
+                  listKey="tfQuestions"
+                  renderItem={
+                    ({item}) =>
+                      <View>
+                        <Text>{item.title}</Text>
+                        <Text>{item.punctuation}</Text>
+                      </View>
+                  }  
+                />
               </View>
           }
           keyExtractor={({id}, index) => id}

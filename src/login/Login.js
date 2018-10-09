@@ -54,6 +54,13 @@ export default class Login extends Component {
             style={styles.buttonSignUp}
           />
 
+          <ButtonComponent
+            onPress={() => navigate('ExamTemplateList')}
+            title="LISTAR-AVALIACOES"
+            label="LISTAR AVALIAÇÔES"
+            style={styles.buttonSignUp}
+          />
+
       </ScrollView>
     );
   }
