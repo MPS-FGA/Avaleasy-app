@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, ActivityIndicator, Text, View  } from 'react-native';
 import { Card } from 'react-native-elements';
+import { LOCALHOST } from '../../localhost';
 
 export default class ExamTemplateList extends Component {
 
@@ -11,7 +12,7 @@ export default class ExamTemplateList extends Component {
 
   componentDidMount(){
     // The 'localhost' should be swapped with the ipv4 adress shown in show-adress.sh
-    return fetch('http://172.29.42.228:3000/examsTemplates/')
+    return fetch('http://' + LOCALHOST +':3000/examsTemplates/')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -56,8 +57,8 @@ export default class ExamTemplateList extends Component {
                 />
                 <View style={styles.question}>
                 <Text style={styles.data}>Questões Objetivas</Text>
-                <FlatList 
-                  data={item.objectiveQuestions} 
+                <FlatList
+                  data={item.objectiveQuestions}
                   listKey={(item, index) => 'D' + index.toString()}
                   renderItem={
                     ({item}) => (
@@ -66,7 +67,7 @@ export default class ExamTemplateList extends Component {
                         <Text><Text style={styles.item}>Pontuação:</Text> {item.punctuation}</Text>
                       </View>
                     )
-                  }  
+                  }
                 />
                 </View>
                 <View
@@ -76,54 +77,54 @@ export default class ExamTemplateList extends Component {
                     margin: 30,
                   }}
                 />
-                <FlatList 
-                  data={item.tblQuestions} 
+                <FlatList
+                  data={item.tblQuestions}
                   listKey={(item, index) => 'D' + index.toString()}
                   renderItem={
                     ({item}) =>
                       <View>
-                        <Text>{item.title}</Text>
-                        <Text>{item.punctuation}</Text>
-                        <Text>{item.alternative1Content}</Text>
-                        <Text>{item.alternative2Content}</Text>
-                        <Text>{item.alternative3Content}</Text>
-                        <Text>{item.alternative4Content}</Text>
+                        <Text><Text style={styles.item}>Título:</Text> {item.title}</Text>
+                        <Text><Text style={styles.item}>Pontuação:</Text> {item.punctuation}</Text>
+                        <Text><Text style={styles.item}>Alternativa 1:</Text> {item.alternative1Content}</Text>
+                        <Text><Text style={styles.item}>Alternativa 2:</Text> {item.alternative2Content}</Text>
+                        <Text><Text style={styles.item}>Alternativa 3:</Text> {item.alternative3Content}</Text>
+                        <Text><Text style={styles.item}>Alternativa 4:</Text> {item.alternative4Content}</Text>
                       </View>
-                  }  
+                  }
                 />
-                <FlatList 
-                  data={item.multipleChoiceQuestions} 
+                <FlatList
+                  data={item.multipleChoiceQuestions}
                   listKey={(item, index) => 'D' + index.toString()}
                   renderItem={
                     ({item}) =>
                       <View>
-                        <Text>{item.title}</Text>
-                        <Text>{item.punctuation}</Text>
-                        <Text>{item.numberOfAlternatives}</Text>
+                        <Text><Text style={styles.item}>Título:</Text> {item.title}</Text>
+                        <Text><Text style={styles.item}>Pontuação:</Text> {item.punctuation}</Text>
+                        <Text><Text style={styles.item}>Número de Alternativas:</Text> {item.numberOfAlternatives}</Text>
                         <FlatList
                           data={item.multipleChoiceAlternatives}
                           listKey={(item, index) => 'D' + index.toString()}
                           renderItem={
                             ({item}) =>
                               <View>
-                                <Text>{item.content}</Text>
+                                <Text><Text style={styles.item}>Alternativa:</Text> {item.content}</Text>
                               </View>
                           }
                         />
                       </View>
-                  }  
+                  }
                 />
-                <FlatList 
-                  data={item.tfQuestions} 
+                <FlatList
+                  data={item.tfQuestions}
                   listKey={(item, index) => 'D' + index.toString()}
                   renderItem={
                     ({item}) =>
                       <View>
-                        <Text>{item.title}</Text>
-                        <Text>{item.punctuation}</Text>
-                        <Text>{item.value}</Text>
+                        <Text><Text style={styles.item}>Título:</Text> {item.title}</Text>
+                        <Text><Text style={styles.item}>Pontuação:</Text> {item.punctuation}</Text>
+                        <Text><Text style={styles.item}>Valor:</Text> {item.value}</Text>
                       </View>
-                  }  
+                  }
                 />
             </Card>
           }
@@ -158,7 +159,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   question: {
-    
+
   }
 
 });
