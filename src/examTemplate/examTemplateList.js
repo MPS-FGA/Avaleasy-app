@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, FlatList, ActivityIndicator, Text, View  } from 'react-native';
+import { Card } from 'react-native-elements';
 
 export default class ExamTemplateList extends Component {
 
@@ -10,7 +11,7 @@ export default class ExamTemplateList extends Component {
 
   componentDidMount(){
     // The 'localhost' should be swapped with the ipv4 adress shown in show-adress.sh
-    return fetch('http://192.168.0.29:3000/examsTemplates/')
+    return fetch('http://172.29.42.228:3000/examsTemplates/')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -40,25 +41,40 @@ export default class ExamTemplateList extends Component {
       <View style={styles.examTemplateStyle}>
         <FlatList
           styles={styles.container}
-          listKey={"examlist-key"}
-          key={"examlist-key"}
           data={this.state.dataSource}
           renderItem={
             ({ item }) =>
-              <View style={styles.item}>
-                <Text>{item.title}</Text>
-                <Text>{item.value}</Text>
+              <Card>
+                <Text style={styles.item}>{item.title}</Text>
+                <Text><Text style={styles.item}>Pontuação total:</Text> {item.value}</Text>
+                <View
+                  style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    margin: 30,
+                  }}
+                />
+                <View style={styles.question}>
+                <Text style={styles.data}>Questões Objetivas</Text>
                 <FlatList 
                   data={item.objectiveQuestions} 
                   listKey={(item, index) => 'D' + index.toString()}
                   renderItem={
                     ({item}) => (
                       <View>
-                        <Text>{item.title}</Text>
-                        <Text>{item.punctuation}</Text>
+                        <Text><Text style={styles.item}>Título:</Text> {item.title}</Text>
+                        <Text><Text style={styles.item}>Pontuação:</Text> {item.punctuation}</Text>
                       </View>
                     )
                   }  
+                />
+                </View>
+                <View
+                  style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    margin: 30,
+                  }}
                 />
                 <FlatList 
                   data={item.tblQuestions} 
@@ -109,7 +125,7 @@ export default class ExamTemplateList extends Component {
                       </View>
                   }  
                 />
-              </View>
+            </Card>
           }
           keyExtractor={({id}, index) => id}
         />
@@ -131,8 +147,18 @@ const styles = StyleSheet.create({
     flex: 1
   },
   item: {
+    fontWeight: 'bold',
+    textAlign: 'center',
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: '#ccc'
+    borderBottomColor: '#ccc',
+    marginBottom: 30,
+  },
+  data: {
+    fontWeight: 'bold',
+  },
+  question: {
+    
   }
+
 });
