@@ -3,6 +3,8 @@ import { StyleSheet, ScrollView, Alert, Image } from 'react-native';
 
 import { FloatingLabelInput } from '../components/FloatingLabelInput';
 import { ButtonComponent } from '../components/ButtonComponent';
+import generalStyle from "../styles/GeneralStyle";
+import loginScreenStyle from "../styles/LoginScreenStyle";
 
 
 export default class Login extends Component {
@@ -24,8 +26,8 @@ export default class Login extends Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <Image style={styles.image} source={require('../images/avaleasy.png')} />
+      <ScrollView contentContainerStyle={generalStyle.container}>
+        <Image style={generalStyle.image} source={require('../images/avaleasy.png')} />
 
           <FloatingLabelInput
             label="Email"
@@ -41,17 +43,19 @@ export default class Login extends Component {
           />
 
           <ButtonComponent
-            onPress={this._login}
+            onPress={() => navigate('Profile', {idLogged: '5bba73c0a4b7390044221e05'})}
             title="ENTRAR"
             label="ENTRAR"
-            style={styles.buttonLogin}
+            style={loginScreenStyle.buttonLogin}
+            styleText={generalStyle.textButton}
           />
 
           <ButtonComponent
             onPress={() => navigate('SignUp')}
             title="CADASTRAR-SE"
             label="CADASTRAR-SE"
-            style={styles.buttonSignUp}
+            style={loginScreenStyle.buttonSignUp}
+            styleText={generalStyle.textButton}
           />
 
       </ScrollView>
@@ -59,33 +63,4 @@ export default class Login extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    justifyContent: 'flex-start',
-  },
 
-  image: {
-    marginTop: 50,
-    marginBottom: 25,
-    width: 150,
-    height: 150,
-    alignSelf: 'center',
-  },
-
-  buttonLogin: {
-    width: 300,
-    marginTop: 20,
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#00cc00',
-  },
-
-  buttonSignUp: {
-    width: 300,
-    marginTop: 20,
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#cdcdcb',
-  },
-});
