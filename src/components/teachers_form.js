@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import t from 'tcomb-form-native';
+import { LOCALHOST } from '../../localhost';
 
 const Form = t.form.Form;
 
@@ -32,7 +33,7 @@ export default class TeacherForm extends Component{
     const value = this.refs.form.getValue();
 
     // The 'localhost' should be swapped with the ipv4 adress shown in show-adress.sh
-    fetch('http://192.168.43.29:3000/teachers/new', {
+    fetch('http://'+ LOCALHOST +':3000/teachers/new', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
