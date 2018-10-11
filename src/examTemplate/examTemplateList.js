@@ -70,19 +70,19 @@ export default class ExamTemplateList extends Component {
                   }
                 />
                 </View>
-                <View
-                  style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    margin: 30,
-                  }}
-                />
                 <FlatList
                   data={item.tblQuestions}
                   listKey={(item, index) => 'D' + index.toString()}
                   renderItem={
                     ({item}) =>
                       <View>
+                        <View
+                          style={{
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                            margin: 30,
+                          }}
+                        />
                         <Text><Text style={styles.item}>Título:</Text> {item.title}</Text>
                         <Text><Text style={styles.item}>Pontuação:</Text> {item.punctuation}</Text>
                         <Text><Text style={styles.item}>Alternativa 1:</Text> {item.alternative1Content}</Text>
@@ -98,6 +98,13 @@ export default class ExamTemplateList extends Component {
                   renderItem={
                     ({item}) =>
                       <View>
+                        <View
+                          style={{
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                            margin: 30,
+                          }}
+                        />
                         <Text><Text style={styles.item}>Título:</Text> {item.title}</Text>
                         <Text><Text style={styles.item}>Pontuação:</Text> {item.punctuation}</Text>
                         <Text><Text style={styles.item}>Número de Alternativas:</Text> {item.numberOfAlternatives}</Text>
@@ -120,6 +127,13 @@ export default class ExamTemplateList extends Component {
                   renderItem={
                     ({item}) =>
                       <View>
+                        <View
+                          style={{
+                            borderBottomColor: 'black',
+                            borderBottomWidth: 1,
+                            margin: 30,
+                          }}
+                        />
                         <Text><Text style={styles.item}>Título:</Text> {item.title}</Text>
                         <Text><Text style={styles.item}>Pontuação:</Text> {item.punctuation}</Text>
                         <Text><Text style={styles.item}>Valor:</Text> {item.value}</Text>

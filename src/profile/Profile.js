@@ -24,7 +24,7 @@ export default class Profile extends Component {
     const { navigation } = this.props;
     var idLogged = navigation.getParam('idLogged', null);
     // The 'localhost' should be swapped with the ipv4 adress shown in show-adress.sh
-    return fetch('http://192.168.15.9:3000/teachers/'+ idLogged)
+    return fetch('http://' + LOCALHOST + ':3000/teachers/' + idLogged)
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
