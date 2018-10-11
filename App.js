@@ -13,7 +13,7 @@ const App = createStackNavigator(
   { 
     Home: { screen: Login },
     SignUp: { screen: TeacherForm },
-    Profile: { screen: Profile }
+    Profile: { screen: Profile },
     ExamTemplateList: { screen: ExamTemplateList}
   },
   {
