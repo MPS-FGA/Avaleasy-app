@@ -9,7 +9,12 @@ export default class ProfileHeader extends React.Component {
     return(
       <View style={profileStyle.container}>
         <Text style={profileStyle.title}> Meu Perfil </Text>
-        <ButtonComponent style={profileStyle.button} styleText={profileStyle.textButton} label="Editar" />
+        <ButtonComponent 
+          onPress={() => navigate('EditProfile')} 
+          style={profileStyle.button}
+          styleText={profileStyle.textButton}
+          label="Editar" 
+        />
       </View>
     )
   }
