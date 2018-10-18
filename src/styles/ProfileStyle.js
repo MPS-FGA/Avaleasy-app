@@ -7,9 +7,8 @@ const profileStyle = StyleSheet.create ({
     justifyContent: 'space-between',
   },
 
-  title: {
+  titlePage: {
     color: '#ffffff', 
-    textAlign: 'left',
     fontSize: 24,
     fontWeight: 'bold',
     alignSelf: 'center',
@@ -17,11 +16,13 @@ const profileStyle = StyleSheet.create ({
 
   button: {
     backgroundColor: '#0a920a',
-    textAlign: 'right',
     fontSize: 24,
     fontWeight: 'bold',
     borderRadius: 5, 
-    marginRight: 15,
+    alignSelf: "center",
+    marginTop: 15,
+    paddingLeft: 20,
+    paddingRight: 20,
   },
 
   textButton: {

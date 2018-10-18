@@ -12,7 +12,11 @@ import { ButtonComponent } from '../components/ButtonComponent';
 export default class Profile extends Component {
   static navigationOptions = ({navigation}) => {
     //title: 'Meu Perfil',
+<<<<<<< HEAD
 
+=======
+
+>>>>>>> Implemented edit profile (is not working).
     titleHeader: <ProfileHeader navigation={navigation} />
   };
 

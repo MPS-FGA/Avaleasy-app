@@ -16,7 +16,7 @@ export class FloatingLabelInput extends Component {
       left: 25,
       top: !isFocused ? 18 : 0,
       fontSize: !isFocused ? 20 : 14,
-      color: '#000',
+      color: '#616161',
     };
 
     return (
