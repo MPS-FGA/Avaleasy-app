@@ -1,6 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
-const profileStyle = StyleSheet.create ({
+const profileStyle = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'row',
@@ -8,7 +8,7 @@ const profileStyle = StyleSheet.create ({
   },
 
   title: {
-    color: '#ffffff', 
+    color: '#ffffff',
     textAlign: 'left',
     fontSize: 24,
     fontWeight: 'bold',
@@ -20,7 +20,7 @@ const profileStyle = StyleSheet.create ({
     textAlign: 'right',
     fontSize: 24,
     fontWeight: 'bold',
-    borderRadius: 5, 
+    borderRadius: 5,
     marginRight: 15,
   },
 
@@ -40,6 +40,15 @@ const profileStyle = StyleSheet.create ({
   contentStyle: {
     fontSize: 14,
     alignSelf: 'center',
+  },
+
+  deleteButton: {
+    backgroundColor: '#ff0000',
+    textAlign: 'right',
+    fontSize: 24,
+    fontWeight: 'bold',
+    borderRadius: 5,
+    marginRight: 15,
   },
 
 });
