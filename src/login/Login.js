@@ -43,15 +43,18 @@ export default class Login extends Component {
        console.error(error);
     })
     .then(response => response.json())
-    .then((response) => {
+    .then(async (response) => {
+
       var decoded = jwt_decode(response.token)
-      console.log(response.token);
-      console.log(decoded);
-      console.log(decoded.teacherId);
 
-      navigate('Profile', {idLogged: decoded.teacherId});
+      AsyncStorage.setItem('TOKEN_KEY', response.token);
+      AsyncStorage.setItem('TEACHER_ID', decoded.teacherId);
+
+      const token = await AsyncStorage.getItem('TOKEN_KEY');
+      const teacherId = await AsyncStorage.getItem('TEACHER_ID');
+
+      navigate('Profile', {idLogged: teacherId});
     });
-
   }
 
   render() {
