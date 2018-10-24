@@ -26,6 +26,7 @@ export default class Login extends Component {
 
   handleSubmit = () => {
     const { navigate } = this.props.navigation;
+    var jwt_decode = require('jwt-decode');
 
     fetch('http://' + LOCALHOST + ':3000/auth/sign-in', {
       method: 'POST',
@@ -43,12 +44,14 @@ export default class Login extends Component {
     })
     .then(response => response.json())
     .then((response) => {
-      console.log(response);
-    })
-    .then(() => {
-      console.log(this.state.email);
-    })
-    .then(() => navigate('Profile', {idLogged: '5bba73c0a4b7390044221e05'}));
+      var decoded = jwt_decode(response.token)
+      console.log(response.token);
+      console.log(decoded);
+      console.log(decoded.teacherId);
+
+      navigate('Profile', {idLogged: decoded.teacherId});
+    });
+
   }
 
   render() {
