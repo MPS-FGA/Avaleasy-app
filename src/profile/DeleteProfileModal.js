@@ -1,36 +1,26 @@
 import React, { Component } from 'react';
-import { Modal, View, Text, StyleSheet } from 'react-native';
-
+import { Modal, View, Text, StyleSheet, TouchableHighlight, Button, Alert } from 'react-native';
+import { AsyncStorage } from 'react-native';
+import { LOCALHOST } from '../../localhost';
+import { ButtonComponent } from '../components/ButtonComponent';
 
 export default class DeleteModal extends Component {
 
-  deleteProfile(){
-    var idLogged = navigation.getParam('idLogged', null);
+  async deleteProfile() {
+    const teacherId = await AsyncStorage.getItem('TEACHER_ID');
 
-    return fetch('http://' + LOCALHOST + ':3000/teachers/' + idLogged, { method: 'DELETE' })
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState({
-          isLoading: false,
-          dataSource: responseJson, 
-        }, function(){});
+    return fetch('http://' + LOCALHOST + ':3000/teachers/' + teacherId, { 
+      method: 'DELETE',
+    })
+      .then((response) => {
+        return Alert.alert("Atenção", "Perfil DELETADO");
       })
-      .catch((error) => {
-        console.error(error);
-      });
-
   }
 
   render() {
     return(
-      <Modal visible={this.props.display} anymationType = "slide"
-        onRequestClose={ () => console.log('closed') }>
-
-        <View>
-          <Text>Modal aberta</Text>
-        </View>
-
-      </Modal>
+      <Button onPress={this.deleteProfile}
+        title="Deletar Perfil" />
     )
   }
 }

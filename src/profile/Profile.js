@@ -18,12 +18,9 @@ export default class Profile extends Component {
 
   constructor(props) {
       super(props);
-      this.state = { isLoading: true};
+      this.state = { isLoading: true, display: false };
   }
 
-  state = {
-    display: false
-  }
 
   triggerModal() {
     this.setState(prevState => {
@@ -63,10 +60,7 @@ export default class Profile extends Component {
         <Image style={generalStyle.image} source={require('../images/avaleasy.png')}/>
         <Text style={profileStyle.nameStyle}> {data.name} </Text>
         <Text style={profileStyle.contentStyle}> {data.email} </Text>
-        <Button 
-          onPress = { () => this.triggerModal() }
-          title = "Delete Perfil">
-        </Button>
+        <DeleteModal />
       </View>
     );
   }
