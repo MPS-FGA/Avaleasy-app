@@ -6,7 +6,7 @@ import generalStyle from "../styles/GeneralStyle";
 import { ButtonComponent } from '../components/ButtonComponent';
 import ProfileHeader from './ProfileHeader';
 import profileStyle from '../styles/ProfileStyle';
-
+import { LOCALHOST } from '../../localhost';
 
 
 export default class Profile extends Component {
@@ -43,7 +43,7 @@ export default class Profile extends Component {
         <View />
       )
     }
-    
+
     const data = this.state.dataSource;
     return (
       <View style={generalStyle.container}>
