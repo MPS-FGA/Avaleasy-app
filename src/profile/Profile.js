@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-import { StyleSheet, View, Alert, Image, TouchableHighlight, Text } from 'react-native';
+import { StyleSheet, View, Alert, Image, TouchableHighlight, Text, Button } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 import generalStyle from "../styles/GeneralStyle";
 import { ButtonComponent } from '../components/ButtonComponent';
 import ProfileHeader from './ProfileHeader';
+import DeleteModal from './DeleteProfileModal';
 import profileStyle from '../styles/ProfileStyle';
 import { LOCALHOST } from '../../localhost';
 
@@ -18,6 +19,18 @@ export default class Profile extends Component {
   constructor(props) {
       super(props);
       this.state = { isLoading: true};
+  }
+
+  state = {
+    display: false
+  }
+
+  triggerModal() {
+    this.setState(prevState => {
+      return {
+        display: true
+      }
+    });
   }
 
   componentDidMount(){
@@ -50,6 +63,10 @@ export default class Profile extends Component {
         <Image style={generalStyle.image} source={require('../images/avaleasy.png')}/>
         <Text style={profileStyle.nameStyle}> {data.name} </Text>
         <Text style={profileStyle.contentStyle}> {data.email} </Text>
+        <Button 
+          onPress = { () => this.triggerModal() }
+          title = "Delete Perfil">
+        </Button>
       </View>
     );
   }
