@@ -5,6 +5,10 @@ import {
 
 import { FloatingLabelInput } from '../components/FloatingLabelInput';
 import { ButtonComponent } from '../components/ButtonComponent';
+import generalStyle from "../styles/GeneralStyle";
+import loginScreenStyle from "../styles/LoginScreenStyle";
+import { AsyncStorage } from 'react-native';
+import { LOCALHOST } from '../../localhost';
 
 
 export default class Login extends Component {
@@ -21,12 +25,45 @@ export default class Login extends Component {
     Alert.alert('You tapped the button!');
   }
 
+  handleSubmit = () => {
+    const { navigate } = this.props.navigation;
+    var jwt_decode = require('jwt-decode');
+
+    fetch('http://' + LOCALHOST + ':3000/auth/sign-in', {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email: this.state.email,
+        password: this.state.password
+      })
+    })
+    .catch(function(error) {
+       console.error(error);
+    })
+    .then(response => response.json())
+    .then(async (response) => {
+
+      var decoded = jwt_decode(response.token)
+
+      AsyncStorage.setItem('TOKEN_KEY', response.token);
+      AsyncStorage.setItem('TEACHER_ID', decoded.teacherId);
+
+      const token = await AsyncStorage.getItem('TOKEN_KEY');
+      const teacherId = await AsyncStorage.getItem('TEACHER_ID');
+
+      navigate('Profile', {idLogged: teacherId});
+    });
+  }
+
   render() {
     const { navigate } = this.props.navigation;
 
     return (
-      <ScrollView contentContainerStyle={styles.container}>
-        <Image style={styles.image} source={require('../images/avaleasy.png')} />
+      <ScrollView contentContainerStyle={generalStyle.container}>
+        <Image style={generalStyle.image} source={require('../images/avaleasy.png')} />
 
         <FloatingLabelInput
           label="Email"
@@ -59,34 +96,3 @@ export default class Login extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    justifyContent: 'flex-start',
-  },
-
-  image: {
-    marginTop: 50,
-    marginBottom: 25,
-    width: 150,
-    height: 150,
-    alignSelf: 'center',
-  },
-
-  buttonLogin: {
-    width: 300,
-    marginTop: 20,
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#00cc00',
-  },
-
-  buttonSignUp: {
-    width: 300,
-    marginTop: 20,
-    alignItems: 'center',
-    alignSelf: 'center',
-    backgroundColor: '#cdcdcb',
-  },
-});
