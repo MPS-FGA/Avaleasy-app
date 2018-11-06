@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import { Text, View, TextInput, StyleSheet } from 'react-native';
+import {
+  Text, View, TextInput, StyleSheet,
+} from 'react-native';
 
 export class FloatingLabelInput extends Component {
   state = {
@@ -7,6 +9,7 @@ export class FloatingLabelInput extends Component {
   };
 
   handleFocus = () => this.setState({ isFocused: true });
+
   handleBlur = () => this.setState({ isFocused: false });
 
   render() {
@@ -44,4 +47,4 @@ const styles = StyleSheet.create({
     color: '#000',
     borderBottomColor: '#555',
   },
-})
+});

@@ -1,6 +1,8 @@
-'use strict';
+
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import {
+  StyleSheet, Text, View, Button,
+} from 'react-native';
 import t from 'tcomb-form-native';
 import { LOCALHOST } from '../../localhost';
 
@@ -15,20 +17,19 @@ const Teacher = t.struct({
 const options = {
   fields: {
     name: {
-      error: '* Este campo é obrigatório'
+      error: '* Este campo é obrigatório',
     },
     email: {
-      error: '* Este campo é obrigatório'
+      error: '* Este campo é obrigatório',
     },
     password: {
-      error: '* Este campo é obrigatório'
+      error: '* Este campo é obrigatório',
     },
   },
   stylesheet: formStyles,
 };
 
-export default class TeacherForm extends Component{
-
+export default class TeacherForm extends Component {
   handleSubmit = () => {
     const value = this.refs.form.getValue();
 
@@ -36,17 +37,17 @@ export default class TeacherForm extends Component{
     fetch('http://'+ LOCALHOST +':3000/teachers/new', {
       method: 'POST',
       headers: {
-        'Accept': 'application/json',
+        Accept: 'application/json',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(value)
+      body: JSON.stringify(value),
     })
-    .catch(function(error) {
-       console.error(error);
-    });
+      .catch((error) => {
+        console.error(error);
+      });
   }
 
-  render(){
+  render() {
     return (
       <View style={styles.container}>
         <Form
@@ -68,7 +69,7 @@ const formStyles = {
   ...Form.stylesheet,
   formGroup: {
     normal: {
-      marginBottom: 10
+      marginBottom: 10,
     },
   },
   controlLabel: {
@@ -76,16 +77,16 @@ const formStyles = {
       color: 'blue',
       fontSize: 18,
       marginBottom: 7,
-      fontWeight: '600'
+      fontWeight: '600',
     },
     error: {
       color: 'red',
       fontSize: 18,
       marginBottom: 7,
-      fontWeight: '600'
-    }
-  }
-}
+      fontWeight: '600',
+    },
+  },
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -95,6 +96,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
   },
   button: {
-    color: '#7FFF00'
+    color: '#7FFF00',
   },
 });
